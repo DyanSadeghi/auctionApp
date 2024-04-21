@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "97f33a6c-302f-4717-98f7-62b36b6bf45c",
+		"name": "Auction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26795383"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "getAllAuctions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/auctions"
+					},
+					"response": []
+				},
+				{
+					"name": "getSingle:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/auctions/"
+					},
+					"response": []
+				},
+				{
+					"name": "WhoAmI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/whoami"
+					},
+					"response": []
+				},
+				{
+					"name": "myAuctions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjYxY2JiNTQ3ZGJmYzYwZTg3MGIxMzk0IiwiaWF0IjoxNzEzNDE0NTQzLCJleHAiOjE3MTM4MTA1NDN9.u0MfeE2yOyQdXo4ksKzy91ijsD1Szndtps_tilVftIs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "http://localhost:3000/myauctions"
+					},
+					"response": []
+				},
+				{
+					"name": "getPoolAuctionRequest:id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjYxY2JiNTQ3ZGJmYzYwZTg3MGIxMzk0IiwiaWF0IjoxNzEzNjgwOTUyLCJleHAiOjE3MTQwNzY5NTJ9.WrgASn6M_Qr7LuDvvpukZIoKv0k6ZI-8ChLG9Hey1CA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "poolauctionid",
+									"value": "66228e9acdb3c6b468e847f1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/poolauctions"
+					},
+					"response": []
+				},
+				{
+					"name": "postPoolAuctions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjYxY2JiNTQ3ZGJmYzYwZTg3MGIxMzk0IiwiaWF0IjoxNzEzNTM5NjkxLCJleHAiOjE3MTM5MzU2OTF9.KNCA6jpwoSfiYhs8kkd_vunL-M6GMD2O4lOKOQMlMKo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"auction\":\"6620b958aad173faf12af6cd\",\r\n    \"totalPrice\":\"85000\",\r\n    \"paymentMethod\":[{\"date\":\"4\",\"price\":85000}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/poolauctions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"poolauctions"
+							],
+							"query": [
+								{
+									"key": "user._id",
+									"value": "661cbb547dbfc60e870b1394",
+									"disabled": true
+								},
+								{
+									"key": "auctionId",
+									"value": "6620b958aad173faf12af6cd",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putPoolAuctionRequest:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjYxY2JiNTQ3ZGJmYzYwZTg3MGIxMzk0IiwiaWF0IjoxNzEzNjgwOTUyLCJleHAiOjE3MTQwNzY5NTJ9.WrgASn6M_Qr7LuDvvpukZIoKv0k6ZI-8ChLG9Hey1CA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"totalPrice\":\"95000\",\r\n    \"paymentMethod\":[{\"date\":\"4\",\"price\":85000}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/poolauctions/66228e9acdb3c6b468e847f1"
+					},
+					"response": []
+				},
+				{
+					"name": "deletePoolAuction:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjYxY2JiNTQ3ZGJmYzYwZTg3MGIxMzk0IiwiaWF0IjoxNzEzNjgwOTUyLCJleHAiOjE3MTQwNzY5NTJ9.WrgASn6M_Qr7LuDvvpukZIoKv0k6ZI-8ChLG9Hey1CA",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/poolauctions/6624b20ff81b048fabe48c8a"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dyan",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "dyan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "email",
+								"value": "dyan@gmail.com",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "password",
+								"value": "12345",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "dyan@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "getPoolAuctions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/admin/poolauctions"
+					},
+					"response": []
+				},
+				{
+					"name": "getAuctions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/admin/auctions"
+					},
+					"response": []
+				},
+				{
+					"name": "postAuction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjYxZTBmM2ZmNGE5Y2I1YzA2MzRjZDQ0IiwiaWF0IjoxNzEzNDE3NTQ5LCJleHAiOjE3MTM4MTM1NDl9.bLp3ynxnVxlh0Vpxvlf-2ZE93oMfxi8FHxWmM7vYsYQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"basicPrice\":\"352000\",\r\n    \"meterage\":\"1500\",\r\n    \"address\":\"kaspian\",\r\n    \"timeAuction\":{\"timeBound\":\"25\",\"expiresIn\":\"40\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/admin/auction"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAuctions:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjYxY2JiNTQ3ZGJmYzYwZTg3MGIxMzk0IiwiaWF0IjoxNzEzNDE0NTQzLCJleHAiOjE3MTM4MTA1NDN9.u0MfeE2yOyQdXo4ksKzy91ijsD1Szndtps_tilVftIs",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/admin/auction/661f7627a26565c3cfe24c5c"
+					},
+					"response": []
+				},
+				{
+					"name": "putAuction",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:3000/admin/auction"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HomeController",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/"
+			},
+			"response": []
+		}
+	]
+}
