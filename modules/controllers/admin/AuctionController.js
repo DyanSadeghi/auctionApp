@@ -1,4 +1,11 @@
 const Controller = require(`${config.path.controller}/controller`)
+const multer = require('multer');
+
+
+const upload = multer({
+    dest: 'uploads/'
+});
+
 
 const {body} = require("express-validator")
 
@@ -14,28 +21,62 @@ module.exports = new class AuctionController extends Controller{
         }
     }
 
-    async store (req,res){
-        req.checkBody("basicPrice","basicprice is required").notEmpty()
-        req.checkBody("meterage","meterage is required").notEmpty()
-        req.checkBody("address","address is required").notEmpty()
-        req.checkBody("timeAuction","timeauction is required").notEmpty()
+    // async store (req,res){
+    //     req.checkBody("basicPrice","basicprice is required").notEmpty()
+    //     req.checkBody("meterage","meterage is required").notEmpty()
+    //     req.checkBody("address","address is required").notEmpty()
+    //     req.checkBody("timeAuction","timeauction is required").notEmpty()
 
-        if(this.showValidationErrors(req,res))return 
+    //     if(this.showValidationErrors(req,res))return 
+
+    //     try {
+    //         let newAuction = await new this.model.Auction({
+    //             basicPrice : req.body.basicPrice,
+    //             meterage : req.body.meterage,
+    //             address : req.body.address,
+
+    //             timeAuction : req.body.timeAuction
+
+    //         })
+    //         newAuction.save()
+    //         return res.json("auction created")
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+
+    // }
+    async store(req, res) {
+    
+        req.checkBody("basicPrice", "basicprice is required").notEmpty();
+        req.checkBody("meterage", "meterage is required").notEmpty();
+        req.checkBody("address", "address is required").notEmpty();
+        req.checkBody("timeAuction", "timeauction is required").notEmpty();
+
+        if (this.showValidationErrors(req, res)) return;
 
         try {
-            let newAuction = await new this.model.Auction({
-                basicPrice : req.body.basicPrice,
-                meterage : req.body.meterage,
-                address : req.body.address,
-                timeAuction : req.body.timeAuction
+            let images = []; 
 
-            })
-            newAuction.save()
-            return res.json("auction created")
+       
+            if (req.files && req.files.length > 0) {
+                req.files.forEach(file => {
+                    images.push(file.path);
+                });
+            }
+
+            let newAuction = await new this.model.Auction({
+                basicPrice: req.body.basicPrice,
+                meterage: req.body.meterage,
+                address: req.body.address,
+                timeAuction: req.body.timeAuction,
+                images: images 
+            });
+
+            await newAuction.save();
+            return res.json("auction created");
         } catch (error) {
             console.log(error);
         }
-
     }
     async update(req,res){
         req.checkParams("id","id is not correct").isMongoId()
